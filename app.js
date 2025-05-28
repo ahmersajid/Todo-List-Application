@@ -4,7 +4,7 @@ let getInp = document.querySelector("#inp");
 window.onload = Swal.fire({
   icon:"success",
   title:"Welcom Sir/Madem",
-  text:"This is The Todo-List-Application"
+  text:"This is a Todo-List-Application"
   });
 
  function addTodo() {
