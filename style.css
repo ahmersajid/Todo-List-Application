@@ -74,3 +74,9 @@ h1:hover{
 .Ol li .btn {
     flex-shrink: 0;
 }
+
+#list{
+    flex-wrap: wrap;
+    word-break: break-Word;
+    overflow-wrap: break-word;
+}
