@@ -3,13 +3,13 @@ let getInp = document.querySelector("#inp");
 
 window.onload = Swal.fire({
   icon:"success",
-  title:"Welcom Sir/Madem",
+  title:"Welcome Sir/Madem",
   text:"This is a Todo-List-Application"
   });
 
  function addTodo() {
  
-let todos = JSON.parse(localStorage.getItem('data')) || [];
+let todos = JSON.parse(localStorage.getItem('Data')) || [];
        if(getInp.value === ''){
       Swal.fire({
         icon:"question",
@@ -24,7 +24,7 @@ let todos = JSON.parse(localStorage.getItem('data')) || [];
     <button class="btn btn-danger m-2 w-75 px-4" onclick="this.parentElement.remove()"> Delete </button>
     </li>`
     todos.push(getInp.value);
-    localStorage.setItem('data',JSON.stringify(todos))
+    localStorage.setItem('Data',JSON.stringify(todos))
     getInp.value = ''};
   }
 
@@ -44,7 +44,7 @@ function delallTodo() {
         if (result.isConfirmed) {
             let getOl = document.querySelectorAll('.Ol')[0];
             getOl.innerHTML = '';
-              localStorage.removeItem('data');
+              localStorage.removeItem('Data');
             Swal.fire({
                 title: "Deleted!",
                 text: "Your todos have been deleted.",
@@ -56,17 +56,31 @@ function delallTodo() {
 
 function editTodo(El) {
     let spanELement = El.parentNode.querySelector('span');
-    let getPrompt = prompt("Enter Updated Value", spanELement.textContent)
-    if (getPrompt !== null){
-        spanELement.textContent = getPrompt
-    let toods = Array.from(getOl.children).map(li => li.querySelector('span').textContent);
-    localStorage.setItem('data',JSON.stringify(toods));
-    }
+    
+    Swal.fire({
+        title: 'Edit Task',
+        input: 'text',
+        inputValue: spanELement.textContent,
+        showCancelButton: true,
+        confirmButtonText: 'Update',
+        cancelButtonText: 'Cancel',
+        inputValidator: (value) => {
+            if (!value) {
+                return 'Please enter a task!';
+            }
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            spanELement.textContent = result.value;
+            let todos = Array.from(getOl.children).map(li => li.querySelector('span').textContent);
+            localStorage.setItem('Data', JSON.stringify(todos));
+        }
+    });
 }
 
 function delTodo(El) {
   El.parentElement.remove();
      let todos = Array.from(getOl.children).map(li => li.querySelector('span').textContent);
-        localStorage.setItem('data', JSON.stringify(todos));
+        localStorage.setItem('Data', JSON.stringify(todos));
+        localStorage.removeItem('Data');
 }
-
