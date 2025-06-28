@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, Helvetica, sans-serif;
+}
+
+body{
+    background-image: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+}
+
+#main{
+    margin-top: 150px;
+}
+h1{
+    background: linear-gradient(to right,#3F5EFB,#f86d89,#3FE8FB);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-backdrop-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-gradient 2.5s linear infinite;
+}
+
+@keyframes animate-gradient {
+    to{
+        background-position: 200%;
+    }
+}
+
+h1:hover{
+    transform: translateY(-50px);
+    transition: 2s;
+}
+
+#inp{
+  animation:linear ease-in-out;
+  background-color: whitesmoke;
+  animation-name: move-Left;
+  animation-duration: 2.5s;
+}
+
+@keyframes  move-Left{
+    0%{
+        transform: translateX(1000px);
+    }
+}
+
+#btn-Add{
+    animation:linear ease-in-out;
+    animation-name: move-right;
+    animation-duration: 2.5s ;
+    font-size: x-large;
+}
+
+@keyframes move-right{
+    0%{
+        transform: translateX(-800px);
+        opacity: 2.5;
+    }
+} 
+
+#btn-delet{
+    animation:linear ease-in-out;
+    animation-name: delet-move;
+    animation-duration: 2.5s;
+    font-size: x-large;
+}
+
+@keyframes delet-move{
+    0%{
+        transform: translateX(500px);
+    }
+}
+
+.Ol li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:rgb(0, 0, 0);
+}
+
+.Ol li span {
+    flex-grow: 1;
+}
+
+.Ol li .btn {
+    flex-shrink: 0;
+}
+
+#list{
+    flex-wrap: wrap;
+    word-break: break-Word;
+    overflow-wrap: break-word;
+}
